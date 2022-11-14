@@ -1,4 +1,4 @@
-const Aqua = require('../events');
+const kitten = require('../events');
 const {MessageType,Mimetype} = require('@adiwajshing/baileys');
 const config = require('../config'); 
 const axios = require('axios');
@@ -17,7 +17,7 @@ const ytmp3 = require('../lib/ytmp3');
 const { yt720 ,  yt480 ,  yt360 } = require('../lib/ytmp4');
 let wk = config.WORKTYPE == 'public' ? false : true
 
- Aqua.addCommand({pattern: 'song ?(.*)', fromMe: wk, desc: Lang.SONG_DESC, deleteCommand: false}, (async (message, match) => {
+ kitten.addCommand({pattern: 'song ?(.*)', fromMe: wk, desc: Lang.SONG_DESC, deleteCommand: false}, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text, {quoted: message.data});
         let arama = await yts(match[1]);
@@ -32,7 +32,7 @@ let wk = config.WORKTYPE == 'public' ? false : true
       
           
         
-         const msg = '┌───[🐋𝙰𝚀𝚄𝙰𝙱𝙾𝚃🐋]\n\n  *📥SONG DOWNLODER*\n\n│🎧sᴏɴɢ: ' + title2 + '\n\n│ 👀ᴠɪᴇᴡs: ' + views + '\n\n│ 📹 ᴄʜᴀɴɴᴇʟ: ' + author + '\n\n│🖇️ᴜʀʟ: ' + url + '\n\n└───────────◉'
+         const msg = '┌───[😼Dark Kitten bot😼 V- 1.0.0]\n\n  *📥SONG DOWNLODER*\n\n│🎧sᴏɴɢ: ' + title2 + '\n\n│ 👀ᴠɪᴇᴡs: ' + views + '\n\n│ 📹 ᴄʜᴀɴɴᴇʟ: ' + author + '\n\n│🖇️ᴜʀʟ: ' + url + '\n\n└───────────◉'
          var logo = await axios.get(thumbnail ,{responseType: 'arraybuffer'});
  
     var PIC = Buffer.from(logo.data)
@@ -60,7 +60,7 @@ let wk = config.WORKTYPE == 'public' ? false : true
    await message.client.sendMessage(message.jid, buttonMessage ,MessageType.buttonsMessage, {quoted: message.data});
   }));
 
-Aqua.addCommand({pattern: 'dsong ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => { 
+kitten.addCommand({pattern: 'dsong ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => { 
         if (!match[1].includes('youtu')) return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data});
       var load = await message.client.sendMessage(message.jid,config.SONG_DOWN,MessageType.text, {quoted: message.data});
         let stream = await ytmp3(match[1]);
@@ -74,7 +74,7 @@ Aqua.addCommand({pattern: 'dsong ?(.*)', fromMe: wk, dontAddCommandList: true, d
 
 }));
 
-Aqua.addCommand({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => { 
+kitten.addCommand({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => { 
        if (!match[1].includes('youtu')) return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data}); 
       var load = await message.client.sendMessage(message.jid,config.SONG_DOWN,MessageType.text, {quoted: message.data});
          let stream = await ytmp3(match[1]);
@@ -88,7 +88,7 @@ Aqua.addCommand({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, d
 
 }));
 
- Aqua.addCommand({pattern: 'video ?(.*)', fromMe: wk, desc: Lang.VIDEO_DESC, deleteCommand: false }, (async (message, match) => {
+ kitten.addCommand({pattern: 'video ?(.*)', fromMe: wk, desc: Lang.VIDEO_DESC, deleteCommand: false }, (async (message, match) => {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data});    
     if (!match[1].includes('youtu')) return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text, {quoted: message.data});
@@ -103,7 +103,7 @@ Aqua.addCommand({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, d
     let views = s3vid.videos[0].views;
     let author = s3vid.videos[0].author.name;
     let url = s3vid.videos[0].url;
-    let msg = '┌───[🐋𝙰𝚀𝚄𝙰𝙱𝙾𝚃🐋]\n\n  *📥VIDEO DOWNLODER*\n\n│📽️ᴠɪᴅᴇᴏ: ' + title + '\n\n│ 👀ᴠɪᴇᴡs: ' + views + '\n\n│ 📹 ᴄʜᴀɴɴᴇʟ: ' + author + '\n\n│🖇️ᴜʀʟ: ' + url + '\n\n└───────────◉'
+    let msg = '┌───[😼Dark Kitten bot😼 V- 1.0.0]\n\n  *📥VIDEO DOWNLODER*\n\n│📽️ᴠɪᴅᴇᴏ: ' + title + '\n\n│ 👀ᴠɪᴇᴡs: ' + views + '\n\n│ 📹 ᴄʜᴀɴɴᴇʟ: ' + author + '\n\n│🖇️ᴜʀʟ: ' + url + '\n\n└───────────◉'
     var logo = await axios.get(thumbnail ,{responseType: 'arraybuffer'});
  
     var PIC = Buffer.from(logo.data)
@@ -133,7 +133,7 @@ Aqua.addCommand({pattern: 'asong ?(.*)', fromMe: wk, dontAddCommandList: true, d
    await message.client.sendMessage(message.jid, buttonMessage ,MessageType.buttonsMessage, {quoted: message.data});
     }));
 
-Aqua.addCommand({pattern: 'vid480 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
+kitten.addCommand({pattern: 'vid480 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
  const data = await yt480(match[1])
  if (data.status == true) {
  var load = await message.client.sendMessage(message.jid,config.VIDEO_DOWN,MessageType.text, {quoted: message.data});
@@ -144,7 +144,7 @@ Aqua.addCommand({pattern: 'vid480 ?(.*)', fromMe: wk, dontAddCommandList: true, 
         await message.client.sendMessage(message.jid,Buffer.from(vid.data), MessageType.video, {mimetype: Mimetype.mp4,  quoted: message.data , caption : config.CAPTION});
  }
 }));
-Aqua.addCommand({pattern: 'vid720 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
+kitten.addCommand({pattern: 'vid720 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
  const data = await yt720(match[1])
  if (data.status == true) {
  var load = await message.client.sendMessage(message.jid,config.VIDEO_DOWN,MessageType.text, {quoted: message.data});
@@ -156,7 +156,7 @@ Aqua.addCommand({pattern: 'vid720 ?(.*)', fromMe: wk, dontAddCommandList: true, 
  }
 }));
 
-Aqua.addCommand({pattern: 'vid360 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
+kitten.addCommand({pattern: 'vid360 ?(.*)', fromMe: wk, dontAddCommandList: true, deleteCommand: false}, (async (message, match) => {
  const data = await yt360(match[1])
  if (data.status == true) {
  var load = await message.client.sendMessage(message.jid,config.VIDEO_DOWN,MessageType.text, {quoted: message.data});
@@ -167,7 +167,7 @@ Aqua.addCommand({pattern: 'vid360 ?(.*)', fromMe: wk, dontAddCommandList: true, 
         await message.client.sendMessage(message.jid,Buffer.from(vid.data), MessageType.video, {mimetype: Mimetype.mp4,  quoted: message.data , caption : config.CAPTION});
  }
 }));
-Aqua.addCommand({pattern: 'yt ?(.*)', fromMe: wk, desc: Lang.YT_DESC, deleteCommand: false }, (async (message, match) => { 
+kitten.addCommand({pattern: 'yt ?(.*)', fromMe: wk, desc: Lang.YT_DESC, deleteCommand: false }, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text, {quoted: message.data}); 
 var vsn = ''
