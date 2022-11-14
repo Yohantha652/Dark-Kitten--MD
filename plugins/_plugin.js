@@ -4,7 +4,7 @@ you may not use this file except in compliance with the License.
 
 */
 
-const Aqua = require('../events');
+const kitten = require('../events');
 const Heroku = require('heroku-client');
 const Config = require('../config');
 const {MessageType} = require('@adiwajshing/baileys');
@@ -135,7 +135,7 @@ Aqua.addCommand({pattern: 'plugin$', fromMe: true, desc: Lang.PLUGIN_DESC , dele
     }
 }));
 
-Aqua.addCommand({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC, deleteCommand: false }, (async (message, match) => {
+kitten.addCommand({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC, deleteCommand: false }, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_PLUGIN);
     if (!match[1].startsWith('__')) match[1] = '__' + match[1];
     try {
