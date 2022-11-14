@@ -1,4 +1,4 @@
-const Aqua = require('../events');
+const kitten = require('../events');
 const {MessageType,Mimetype} = require('@adiwajshing/baileys');
 const Config = require('../config');
 let wk = Config.WORKTYPE == 'public' ? false : true
@@ -8,7 +8,7 @@ const got = require("got");
 const Language = require('../language');
 const Lang = Language.getString('scrapers');
 var gis = require('g-i-s');
- Aqua.addCommand({pattern: 'img ?(.*)', fromMe: wk, desc: Lang.IMG_DESC, deleteCommand: false}, (async (message, match) => { 
+ kitten.addCommand({pattern: 'img ?(.*)', fromMe: wk, desc: Lang.IMG_DESC, deleteCommand: false}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text, { quoted: message.data });
         gis(match[1], async (error, result) => {
@@ -55,7 +55,7 @@ if (Config.LANG == 'EN') up_5 = '*The 5 photos you requested have been uploaded.
 if (Config.LANG == 'SI') up_5 = '*✅ඔබ ඉල්ලූ ඡායාරූප 5 ක් අප්ලෝඩ් කරන ලදී.*'
 
 
-Aqua.addCommand({ pattern: 'pimg ?(.*)', fromMe: wk, desc:pdesc, deleteCommand: false }, async (message, match) => {
+kitten.addCommand({ pattern: 'pimg ?(.*)', fromMe: wk, desc:pdesc, deleteCommand: false }, async (message, match) => {
    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text, { quoted: message.data });
   
   const images = await pin.pinterest(match[1])
